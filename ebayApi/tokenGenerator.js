@@ -1,6 +1,5 @@
-require('dotenv').config()
-const EbayAuthToken = require("ebay-oauth-nodejs-client")
-
+require("dotenv").config();
+const EbayAuthToken = require("ebay-oauth-nodejs-client");
 
 const ebayAuthToken = new EbayAuthToken({
   clientId: process.env.clientId,
@@ -15,13 +14,13 @@ const clientScope = "https://api.ebay.com/oauth/api_scope";
 const tokenGenerator = () => {
   return ebayAuthToken
     .getApplicationToken("PRODUCTION", clientScope)
-    .then((data) => {
-      console.log(data)
-      console.log(ebayAuthToken)
+    .then(data => {
+      //console.log(data)
+      //console.log(ebayAuthToken)
       const authToken = JSON.parse(data).access_token;
       return authToken;
     })
-    .catch((error) => {
+    .catch(error => {
       console.log(`Error to get Access token :${JSON.stringify(error)}`);
     });
 };
