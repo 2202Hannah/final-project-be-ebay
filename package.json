@@ -11,6 +11,6 @@
   },
   "scripts": {
     "start": "node listen.js",
-    "test": "jest 0--watch"
+    "test": "jest --watch"
   }
 }

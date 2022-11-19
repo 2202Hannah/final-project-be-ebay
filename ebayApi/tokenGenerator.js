@@ -13,11 +13,11 @@ const ebayAuthToken = new EbayAuthToken({
 // ];
 const clientScope = "https://api.ebay.com/oauth/api_scope";
 const tokenGenerator = () => {
-  return ebayAuthToken
+    return ebayAuthToken
     .getApplicationToken("PRODUCTION", clientScope)
     .then((data) => {
-      console.log(data)
-      console.log(ebayAuthToken)
+      // console.log(data)
+      // console.log(ebayAuthToken)
       const authToken = JSON.parse(data).access_token;
       return authToken;
     })

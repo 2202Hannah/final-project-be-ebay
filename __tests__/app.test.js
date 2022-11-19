@@ -1,5 +1,9 @@
 const request = require("supertest");
 const app = require("../app.js");
+
+
+
+
 describe("Error handling", () => {
   test("404: responds with an error when passed a non existant end point", () => {
     return request(app)
@@ -16,7 +20,7 @@ describe("GET /api/ebayCall", () => {
       .get("/api/ebayCall")
       .expect(200);
   });
-  test("return an object containing an item relating to one specified keyword", () => {
+  test.only("return an object containing an item relating to one specified keyword", () => {
     return request(app)
       .get("/api/ebayCall?keyword=drone")
       .then(({ body }) => {
@@ -40,9 +44,9 @@ describe("GET /api/ebayCall", () => {
   });
   test("return an object containing an item relating to multiple specified keyword", () => {
     return request(app)
-      .get("/api/ebayCall?keyword=gift electronics -card -cards")
+      .get("/api/ebayCall?keyword=electronics card cards")
       .then(({ body }) => {
-        console.log(body);
+       
         const itemsArray = body.items;
         itemsArray.forEach(item => {
           expect.objectContaining({
