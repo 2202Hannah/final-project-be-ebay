@@ -17,10 +17,10 @@ describe("Error handling", () => {
 describe("GET /api/ebayCall", () => {
   test("return status 200 when successful", () => {
     return request(app)
-      .get("/api/ebayCall")
+      .get("/api/ebayCall?keyword=drone")
       .expect(200);
   });
-  test.only("return an object containing an item relating to one specified keyword", () => {
+  test("return an object containing an item relating to one specified keyword", () => {
     return request(app)
       .get("/api/ebayCall?keyword=drone")
       .then(({ body }) => {
@@ -42,9 +42,9 @@ describe("GET /api/ebayCall", () => {
         });
       });
   });
-  test("return an object containing an item relating to multiple specified keyword", () => {
+  test("return an object containing an item relating to multiple specified keywords", () => {
     return request(app)
-      .get("/api/ebayCall?keyword=electronics card cards")
+      .get("/api/ebayCall?keyword=pony chocolate")
       .then(({ body }) => {
        
         const itemsArray = body.items;
