@@ -7,7 +7,7 @@ const tokenGenerator = require("./tokenGenerator.js");
 // (4) if only 1 key word send 20 items, if 2 keywords send 10 from each
 
 const fetchItems = (arrOfKeyWords) => {
-  const limit = Math.floor(20 / arrOfKeyWords.length);
+  const limit = Math.floor(10 / arrOfKeyWords.length);
 
   return Promise.all(
     arrOfKeyWords.map((word) => {
@@ -41,7 +41,6 @@ const fetchItems = (arrOfKeyWords) => {
             // return giftArray;
             // console.log(giftArray);
           });
-         
         });
     })
   );
