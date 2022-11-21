@@ -24,7 +24,7 @@ describe("GET /api/ebayCall", () => {
         const itemsArray = body.items;
         expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
-          expect(item.title.includes("Drone")).toBe(true);
+          expect(item.title.toLowerCase().includes("drone")).toBe(true);
           expect(item).toEqual(
             expect.objectContaining({
               itemId: expect.any(String),
@@ -51,7 +51,8 @@ describe("GET /api/ebayCall", () => {
         expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
           expect(
-            item.title.includes("Pony") || item.title.includes("Chocolate")
+            item.title.toLowerCase().includes("pony") ||
+              item.title.toLowerCase().includes("chocolate")
           ).toBe(true);
           expect(item).toEqual(
             expect.objectContaining({
