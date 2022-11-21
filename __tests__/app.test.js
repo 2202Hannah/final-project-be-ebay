@@ -3,7 +3,7 @@ const app = require("../app.js");
 describe("Error handling", () => {
   test("404: responds with an error when passed a non existant end point", () => {
     return request(app)
-      .get("/api/non-existant")
+      .get("/api/non-existant/")
       .expect(404)
       .then(({ body }) => {
         expect(body.msg).toBe("Route not found");
@@ -18,9 +18,10 @@ describe("GET /api/ebayCall", () => {
   });
   test("return an object containing an item relating to one specified keyword", () => {
     return request(app)
-      .get("/api/ebayCall?keyword=drone")
+      .get("/api/ebayCall")
       .then(({ body }) => {
         const itemsArray = body.items;
+        expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
           expect.objectContaining({
             itemId: expect.any(String),
@@ -42,8 +43,8 @@ describe("GET /api/ebayCall", () => {
     return request(app)
       .get("/api/ebayCall?keyword=gift electronics -card -cards")
       .then(({ body }) => {
-        console.log(body);
         const itemsArray = body.items;
+        expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
           expect.objectContaining({
             itemId: expect.any(String),
@@ -59,6 +60,14 @@ describe("GET /api/ebayCall", () => {
             adultOnly: expect.any(Boolean)
           });
         });
+      });
+  });
+  test("404: responds with an error when passed a keyword that is not present in the ebay API", () => {
+    return request(app)
+      .get("/api/ebayCall?keyword=notarealkeyword1234")
+      .expect(404)
+      .then(({ body }) => {
+        expect(body.msg).toBe("keyword not found");
       });
   });
 });
