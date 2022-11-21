@@ -1,5 +1,5 @@
 const axios = require("axios");
-const tokenGenerator = require("./tokenGenerator.js");
+const tokenGenerator = require("../ebayApi/tokenGenerator.js");
 
 const fetchItems = keyword => {
   if (!keyword) {
