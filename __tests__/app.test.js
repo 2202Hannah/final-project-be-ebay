@@ -24,19 +24,22 @@ describe("GET /api/ebayCall", () => {
         const itemsArray = body.items;
         expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
-          expect.objectContaining({
-            itemId: expect.any(String),
-            title: expect.any(String),
-            categories: expect.any(Array),
-            image: expect.any(Object),
-            price: expect.any(Object),
-            thumbnailImages: expect.any(Array),
-            shippingOptions: expect.any(Array),
-            buyingOptions: expect.any(Array),
-            itemWebUrl: expect.any(String),
-            additionalImages: expect.any(Array),
-            adultOnly: expect.any(Boolean)
-          });
+          expect(item.title.includes("Drone")).toBe(true);
+          expect(item).toEqual(
+            expect.objectContaining({
+              itemId: expect.any(String),
+              title: expect.any(String),
+              categories: expect.any(Array),
+              image: expect.any(Object),
+              price: expect.any(Object),
+              thumbnailImage: expect.any(Array),
+              shippingOptions: expect.any(Array),
+              buyingOptions: expect.any(Array),
+              itemWebUrl: expect.any(String),
+              additionalImages: expect.any(Array),
+              adultOnly: expect.any(Boolean)
+            })
+          );
         });
       });
   });
@@ -47,19 +50,23 @@ describe("GET /api/ebayCall", () => {
         const itemsArray = body.items;
         expect(itemsArray).toHaveLength(10);
         itemsArray.forEach(item => {
-          expect.objectContaining({
-            itemId: expect.any(String),
-            title: expect.any(String),
-            categories: expect.any(Array),
-            image: expect.any(Object),
-            price: expect.any(Object),
-            thumbnailImages: expect.any(Array),
-            shippingOptions: expect.any(Array),
-            buyingOptions: expect.any(Array),
-            itemWebUrl: expect.any(String),
-            additionalImages: expect.any(Array),
-            adultOnly: expect.any(Boolean)
-          });
+          expect(
+            item.title.includes("Pony") || item.title.includes("Chocolate")
+          ).toBe(true);
+          expect(item).toEqual(
+            expect.objectContaining({
+              itemId: expect.any(String),
+              title: expect.any(String),
+              categories: expect.any(Array),
+              image: expect.any(Object),
+              price: expect.any(Object),
+              thumbnailImage: expect.any(Array),
+              shippingOptions: expect.any(Array),
+              buyingOptions: expect.any(Array),
+              itemWebUrl: expect.any(String),
+              adultOnly: expect.any(Boolean)
+            })
+          );
         });
       });
   });

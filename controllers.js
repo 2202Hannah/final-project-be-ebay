@@ -5,6 +5,7 @@ exports.getEbayItems = (req, res, next) => {
 
   fetchItems(keyword)
     .then(items => {
+      
       const itemsToReturn = [];
       items.forEach((word, i) => {
         itemsToReturn.push(...items[i]);
