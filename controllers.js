@@ -1,18 +1,20 @@
 const { fetchItems } = require("./ebayApi/api");
 
-
 exports.getEbayItems = (req, res, next) => {
   const { keyword } = req.query;
   //console.log(keyword);
-  const arrOfKeyWords = keyword.split(" ")
+  const arrOfKeyWords = keyword.split(" ");
 
   fetchItems(arrOfKeyWords)
     .then((items) => {
-      console.log(items + "in controller")
-      
-      res.status(200).send({ items });
+      const itemsToReturn = [];
+      arrOfKeyWords.forEach((word, i) => {
+        itemsToReturn.push(...items[i]);
+      });
+      console.log(itemsToReturn.length, "in controller");
+      res.status(200).send({ items: itemsToReturn });
     })
-    .catch(err => {
+    .catch((err) => {
       next(err);
     });
 };
