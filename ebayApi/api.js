@@ -17,7 +17,10 @@ const fetchItems = keyword => {
         return tokenGenerator()
           .then(data => {
             const config = {
-              headers: { Authorization: `Bearer ${data}` }
+              headers: {
+                Authorization: `Bearer ${data}`,
+                "X-EBAY-C-MARKETPLACE-ID": `EBAY_GB`
+              }
             };
 
             return axios.get(
