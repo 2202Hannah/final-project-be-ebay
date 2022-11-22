@@ -1,18 +1,22 @@
 module.exports = [
   {
     username: "2202Hannah",
-    name: "Hannah Barber"
+    name: "Hannah Barber",
+    password: "hohoho"
   },
   {
     username: "icellusedkars",
-    name: "sam"
+    name: "sam",
+    password: "hohoho"
   },
   {
     username: "rogersop",
-    name: "paul"
+    name: "paul",
+    password: "hohoho"
   },
   {
     username: "lurker",
-    name: "do_nothing"
+    name: "do_nothing",
+    password: "hohoho"
   }
 ];

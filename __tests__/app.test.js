@@ -135,7 +135,8 @@ describe("GET /api/users/:username", () => {
         expect(body.user).toEqual(
           expect.objectContaining({
             username: "icellusedkars",
-            name: "sam"
+            name: "sam",
+            password: "hohoho"
           })
         );
       });

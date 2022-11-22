@@ -9,7 +9,8 @@ const seed = async ({ userData, recipientData }) => {
   const usersTablePromise = db.query(`
   CREATE TABLE users (
     username VARCHAR PRIMARY KEY,
-    name VARCHAR NOT NULL
+    name VARCHAR NOT NULL,
+    password VARCHAR
   );`);
 
   await Promise.all([usersTablePromise]);
@@ -24,8 +25,8 @@ const seed = async ({ userData, recipientData }) => {
   );`);
 
   const insertUsersQueryStr = format(
-    "INSERT INTO users ( username, name ) VALUES %L RETURNING *;",
-    userData.map(({ username, name }) => [username, name])
+    "INSERT INTO users ( username, name, password) VALUES %L RETURNING *;",
+    userData.map(({ username, name, password }) => [username, name, password])
   );
   const usersPromise = db
     .query(insertUsersQueryStr)
