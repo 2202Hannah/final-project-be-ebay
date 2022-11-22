@@ -1,4 +1,4 @@
-const { fetchItems } = require("./ebayApi/api");
+const { fetchItems } = require("../models/ebay.model");
 
 exports.getEbayItems = (req, res, next) => {
   const { keyword } = req.query;

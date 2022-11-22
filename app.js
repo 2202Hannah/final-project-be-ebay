@@ -1,16 +1,23 @@
 const express = require("express");
 const app = express();
-const { getEbayItems } = require("./controllers");
+
+const { getEbayItems } = require("./controllers/ebay.controller");
+const {
+  getUsers,
+  getUserByUsername
+} = require(`./controllers/users.controller`);
 const cors = require("cors");
 
 app.use(cors());
 
 app.use(express.json());
-app.get("/", (req, res) => {
-  res.send("Hello");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello");
+// });
 
 app.get("/api/ebayCall", getEbayItems);
+app.get(`/api/users`, getUsers);
+app.get(`/api/users/:username`, getUserByUsername);
 
 app.all("/*", (req, res) => {
   res.status(404).send({ msg: "Route not found" });
