@@ -5,7 +5,7 @@ const {
   getUsers,
   getUserByUsername
 } = require(`./controllers/users.controller`);
-
+const { removeRecipient } = require("./controllers/recipients.controller");
 
 app.use(express.json());
 // app.get("/", (req, res) => {
@@ -13,8 +13,13 @@ app.use(express.json());
 // });
 
 app.get("/api/ebayCall", getEbayItems);
+
 app.get(`/api/users`, getUsers);
 app.get(`/api/users/:username`, getUserByUsername);
+
+//app.get(`/api/users/:username/recipients`, getRecipientsByUsername);
+//app.post(`/api/users/:username/recipients`, postRecipientByUsername);
+app.delete(`/api/recipients/:recipient_id`, removeRecipient);
 
 app.all("/*", (req, res) => {
   res.status(404).send({ msg: "Route not found" });

@@ -132,6 +132,7 @@ describe("GET /api/users/:username", () => {
     return request(app)
       .get("/api/users/icellusedkars")
       .then(({ body }) => {
+        console.log(body);
         expect(body.user).toEqual(
           expect.objectContaining({
             username: "icellusedkars",
@@ -149,3 +150,27 @@ describe("GET /api/users/:username", () => {
       });
   });
 });
+
+// describe("DELETE /api/recipients/:recipient_id", () => {
+//   test("204: returns status 204 when a recipient has been successfully deleted", () => {
+//     return request(app)
+//       .delete("/api/recipients/1")
+//       .expect(204);
+//   });
+//   test("400: responds with an error when passed a recipient ID that is invalid", () => {
+//     return request(app)
+//       .delete("/api/recipients/not-a-number")
+//       .expect(400)
+//       .then(({ body }) => {
+//         expect(body.msg).toBe("You have made a bad request - invalid type");
+//       });
+//   });
+//   test("404: responds with an error when passed a recipient ID not present in our database", () => {
+//     return request(app)
+//       .delete("/api/recipients/10000")
+//       .expect(404)
+//       .then(({ body }) => {
+//         expect(body.msg).toBe("recipient_id not found in the database");
+//       });
+//   });
+// });
