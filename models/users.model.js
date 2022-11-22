@@ -11,6 +11,7 @@ exports.selectUserByUsername = username => {
     .query(`SELECT * FROM users WHERE username = $1`, [username])
     .then(({ rows }) => {
       if (rows.length === 1) {
+        console.log(rows[0]);
         return rows[0];
       } else {
         return Promise.reject({
