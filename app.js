@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
+
 const { getEbayItems } = require("./controllers/ebay.controller");
 const {
   getUsers,
   getUserByUsername
 } = require(`./controllers/users.controller`);
+const cors = require("cors");
 
+app.use(cors());
 
 app.use(express.json());
 // app.get("/", (req, res) => {
