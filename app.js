@@ -6,15 +6,14 @@ const {
   getUsers,
   getUserByUsername
 } = require(`./controllers/users.controller`);
+const { getAllEndPoints } = require("./controllers/contents.controller");
 const cors = require("cors");
 
 app.use(cors());
 
 app.use(express.json());
-// app.get("/", (req, res) => {
-//   res.send("Hello");
-// });
 
+app.get("/api", getAllEndPoints);
 app.get("/api/ebayCall", getEbayItems);
 app.get(`/api/users`, getUsers);
 app.get(`/api/users/:username`, getUserByUsername);

@@ -1,0 +1,45 @@
+{
+  "GET /api": {
+    "description": "serves up a json representation of all the available endpoints of the api"
+  },
+  "GET /api/ebayCall": {
+    "description": "serves an array of all eBay items. Keyword query must be included",
+    "queries": ["keyword"],
+    "exampleResponse": {
+      "topics": [
+        {
+          "itemId": "v1|164115970941|0",
+          "title": "20 Bouncy Jet Balls Ball Party Children Toy Loot Bags Fillers Kids Gift Birthday",
+          "categories": [
+            {
+              "categoryId": "26385",
+              "categoryName": "Favours & Party Bag Fillers"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "GET /api/users": {
+    "description": "serves an array of all users",
+    "queries": [],
+    "exampleResponse": {
+      "articles": [
+        {
+          "username": "2202Hannah",
+          "name": "Hannah Barber",
+          "password": "hohoho"
+        }
+      ]
+    }
+  },
+  "GET /api/users/:username": {
+    "description": "serves an object of information about a specific user",
+    "queries": [],
+    "exampleResponse": {
+      "username": "2202Hannah",
+      "name": "Hannah Barber",
+      "password": "hohoho"
+    }
+  }
+}
