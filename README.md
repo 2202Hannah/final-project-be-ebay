@@ -25,6 +25,9 @@ We wrote the application using full Test Driven Development (TDD). The tests for
 
 We are hosting the app on Heroku here: https://nc-ebay-api.herokuapp.com/api
 
+The front end repository can be found here: https://github.com/robcarter123/react-final-project
+The machine learning model repository can be found here: https://github.com/teyahbd/py-keyword-api
+
 ## How to setup and use the project:
 
 ### To clone the repository:
